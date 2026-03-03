@@ -35,10 +35,12 @@ function generate() {
 }
 
 function assign() {
-    
+
     passwordOptionOne.textContent = setOption()
     passwordOptionTwo.textContent = setOption()
-    
+    localStorage.setItem('pwd1', passwordOptionOne.textContent)
+    localStorage.setItem('pwd2', passwordOptionTwo.textContent)
+
 }
 
 
@@ -96,6 +98,8 @@ function setLength(event) {
     passwordLength = thisBtn.textContent
 
     thisBtn.style.backgroundColor = backColorActive
+    localStorage.setItem('pwdLength', passwordLength)
+    localStorage.setItem('pwdLengthBtnId', thisBtn.id)
 }
 
 // toggle symbols/numbers on/off
@@ -105,21 +109,11 @@ let option = options[posn]
 let toggleText = document.querySelector(".b4")
 
 function toggle() {
-    posn ++
-    if (posn>3) {
-        posn = 0
-    }
+    posn++
+    if (posn > 3) posn = 0
     option = options[posn]
-    
-    if (option === "Letters/Numbers/Symbols") { 
-        toggleText.textContent = option
-    } else if (option === "Letters/Symbols") {
-        toggleText.textContent = option
-    } else if (option === "Letters/Numbers") {
-        toggleText.textContent = option
-    } else if (option === "Letters") {
-        toggleText.textContent = option
-    }
+    toggleText.textContent = option
+    localStorage.setItem('togglePosn', posn)
 }
 
 function getRandNumOrLetter() {
@@ -204,6 +198,7 @@ function switchMode() {
         mode = modes[1]
     }
 
+    localStorage.setItem('mode', mode)
 }
 
 document.querySelector(".b1").addEventListener("click", assign)
@@ -212,3 +207,30 @@ document.querySelectorAll(".b3").forEach(btn => btn.addEventListener("click", se
 document.getElementById("p1").addEventListener("click", copy)
 document.getElementById("p2").addEventListener("click", copy)
 document.getElementById("mode-btn").addEventListener("click", switchMode)
+
+function restoreSession() {
+    const pwd1 = localStorage.getItem('pwd1')
+    const pwd2 = localStorage.getItem('pwd2')
+    if (pwd1) passwordOptionOne.textContent = pwd1
+    if (pwd2) passwordOptionTwo.textContent = pwd2
+
+    const savedLength = localStorage.getItem('pwdLength')
+    const savedBtnId  = localStorage.getItem('pwdLengthBtnId')
+    if (savedLength && savedBtnId) {
+        passwordLength = savedLength
+        thisBtn.style.backgroundColor = backColorInactive
+        thisBtn = document.getElementById(savedBtnId)
+        if (thisBtn) thisBtn.style.backgroundColor = backColorActive
+    }
+
+    const savedPosn = localStorage.getItem('togglePosn')
+    if (savedPosn !== null) {
+        posn = parseInt(savedPosn)
+        option = options[posn]
+        toggleText.textContent = option
+    }
+
+    if (localStorage.getItem('mode') === 'Light') switchMode()
+}
+
+restoreSession()
