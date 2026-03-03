@@ -1,229 +1,193 @@
 body {
     margin: 0;
-    padding: 0 20px 20px 20px;
-    width: 720px;
+    padding: 20px 24px 28px;
+    width: 680px;
     box-sizing: border-box;
     background-color: #1F2937;
-
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* --- Mode toggle (top-right) --- */
+
 #corner-btn-container {
     display: flex;
-    justify-content: right;
-    
-    margin: 20px 20px 110px 0;
+    justify-content: flex-end;
+    margin-bottom: 20px;
 }
 
 #mode-btn {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    
     background-color: #4ADF86;
-    height: 35px;
-    width: 220px;
-    padding: 10px;
+    height: 36px;
+    padding: 0 18px;
     border: none;
-    border-radius: 4px;
-    
+    border-radius: 6px;
     color: whitesmoke;
-    white-space: nowrap; /* keeps text on a single line
-    
-    /* Automatically scale text to container width */
-    font-size: min(16px, 200px / 10); /* Adjust divisor to control scaling */
-
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
 }
+
+/* --- Title --- */
 
 .main-text {
-    padding-top: -10px;
-    padding-bottom: -10px;
+    margin-bottom: 28px;
 }
 
-#upper {
+#upper, #lower {
+    font-size: 2rem;
     font-weight: bold;
-    margin: -2px;
-    color: whitesmoke;
+    margin: 0;
+    line-height: 1.2;
 }
 
-#lower {
-    font-weight: bold;
-    margin: -2px;
-    color: #4ADF86;
-}
+#upper { color: whitesmoke; }
+#lower { color: #4ADF86; }
 
 #msg {
-    margin-top: -0.5;
+    margin: 10px 0 0;
     color: #D5D4D8;
+    font-size: 0.9rem;
+    font-weight: normal;
 }
 
-.b1 {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    
-    background-color: #4ADF86;
-    height: 35px;
-    width: 220px;
-    margin-top: 40px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    
-    color: whitesmoke;
-    white-space: nowrap; /* keeps text on a single line
-    
-    /* Automatically scale text to container width */
-    font-size: min(16px, 200px / 10); /* Adjust divisor to control scaling */
-    
-    margin-right: 10px;
-    margin-left: 10px;
-
-}
+/* --- Global button styles --- */
 
 button {
-    box-shadow: 0 3.5px #999;
+    box-shadow: 0 3px #666;
+    cursor: pointer;
+    transition: background-color 0.15s ease;
 }
 
 button:active {
-    box-shadow: 0 1px #666;
+    box-shadow: 0 1px #444;
     transform: translateY(2px);
+}
+
+/* --- Controls row --- */
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.b1 {
+    background-color: #4ADF86;
+    height: 40px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 6px;
+    color: whitesmoke;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.b1:hover { background-color: #3acd78; }
+
+.b4 {
+    background-color: #2F3E53;
+    height: 40px;
+    padding: 0 16px;
+    border: none;
+    border-radius: 6px;
+    color: whitesmoke;
+    font-size: 14px;
+    white-space: nowrap;
+    flex: 1;
+}
+
+.b4:hover { background-color: #3a4e68; }
+
+/* --- Password length dropdown --- */
+
+.dropdown {
+    position: relative;
+    flex: 1;
+}
+
+.dropdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2F3E53;
+    height: 40px;
+    border-radius: 6px;
+    color: whitesmoke;
+    font-size: 14px;
+    white-space: nowrap;
+    cursor: pointer;
+    box-shadow: 0 3px #666;
+    user-select: none;
+}
+
+.dropdiv p { margin: 0; }
+
+.dropdown:hover .dropdiv { background-color: #4ADF86; }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background-color: #263446;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    z-index: 10;
+}
+
+.dropdown:hover .dropdown-content { display: block; }
+
+.b3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    height: 36px;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: whitesmoke;
+    font-size: 14px;
+    box-shadow: none;
+}
+
+.b3:last-child { border-bottom: none; }
+
+.b3:hover { background-color: #4ADF86; color: #1F2937; }
+
+.b3:active { transform: none; box-shadow: none; }
+
+/* --- Divider --- */
+
+#line {
+    margin: 24px 0;
+    border: none;
+    border-top: 2px solid #2F3E53;
+}
+
+/* --- Password output buttons --- */
+
+.password-container {
+    display: flex;
+    gap: 10px;
 }
 
 .b2 {
     display: flex;
     justify-content: center;
-    text-align: center;
     align-items: center;
-    
     background-color: #2F3E53;
-    height: 35px;
-    width: 220px;
-    margin-top: 40px;
-    margin-right: 20px;
-    padding: 10px;
+    height: 40px;
+    padding: 0 16px;
     border: none;
-    border-radius: 4px;
-    
+    border-radius: 6px;
     color: #4ADF86;
-    white-space: nowrap; /* keeps text on a single line
-    
-    /* Automatically scale text to container width */
-    font-size: min(16px, 200px / 10); /* Adjust divisor to control scaling */
+    font-size: 14px;
+    white-space: nowrap;
+    flex: 1;
 }
 
-.b3 {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    
-    background-color: #2F3E53;
-    height: 35px;
-    width: 220px;
-    padding: 10px;
-    border: none;
-    
-    color: whitesmoke;
-    white-space: nowrap; /* keeps text on a single line
-    
-    /* Automatically scale text to container width */
-    font-size: min(16px, 200px / 10); /* Adjust divisor to control scaling */
-}
-
-
-.dropdown {
-  position: relative;
-  margin-left: 20px;
-}
-
-/* Style the dropdown button */
-.dropdiv {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    
-    background-color: #2F3E53;
-    height: 15px;
-    width: 200px;
-    margin-top: 40px;
-    margin-right: 20px;
-    margin-left: -10px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    
-    color: whitesmoke;
-    white-space: nowrap; /* keeps text on a single line
-    
-    /* Automatically scale text to container width */
-    font-size: min(16px, 200px / 10); /* Adjust divisor to control scaling */
-    box-shadow: 0 3.5px #999;
-}
-
-
-/* Dropdown content */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  width: 220px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  margin-left: -10px;
-}
-
-/* Show the dropdown content on hover */
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-
-/* Change background color of dropdown button on hover */
-.dropdown:hover .dropdiv {
-  background-color: #4ADF86;
-}
-
-.b4 {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    
-    background-color: #2F3E53;
-    height: 35px;
-    width: 220px;
-    margin-top: 40px;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    
-    color: whitesmoke;
-    white-space: nowrap; /* keeps text on a single line
-    
-    /* Automatically scale text to container width */
-    font-size: min(16px, 200px / 10); /* Adjust divisor to control scaling */
-    
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-#line {
-    margin-top: 30px;
-    color: #2F3E53;
-}
-
-.password-container {
-    margin-top: -10px;
-
-    display: flex;
-}
-
-.button-container {
-    margin-top: -10px;
-    margin-left: -10px;
-
-    display: flex;
-
-}
+.b2:hover { background-color: #3a4e68; }
