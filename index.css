@@ -1,6 +1,8 @@
 body {
     margin: 0;
-    margin-left: 60px;
+    padding: 0 20px 20px 20px;
+    width: 720px;
+    box-sizing: border-box;
     background-color: #1F2937;
 
     font-family: Arial, Helvetica, sans-serif;
@@ -209,22 +211,19 @@ button:active {
 
 #line {
     margin-top: 30px;
-    margin-right: 140px;
     color: #2F3E53;
 }
 
 .password-container {
     margin-top: -10px;
-    margin-right: 60px;
-    
+
     display: flex;
 }
 
 .button-container {
     margin-top: -10px;
-    margin-right: 200px;   
     margin-left: -10px;
-    
+
     display: flex;
-    
+
 }

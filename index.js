@@ -42,7 +42,7 @@ function assign() {
 }
 
 
-function copy() {
+function copy(event) {
 
 
     // Get the specific button that was clicked
@@ -77,7 +77,7 @@ let backColorActive = "#4ADF86"
 
 thisBtn.style.backgroundColor = backColorActive
 
-function getThisBtn() {
+function getThisBtn(event) {
     thisBtn = event.target
 }
 
@@ -86,16 +86,16 @@ function saveLastBtn() {
     return lastBtn
 }
 
-function setLength() {
-    
+function setLength(event) {
+
     let btnToChange = saveLastBtn()
     btnToChange.style.backgroundColor = backColorInactive
-    
-    getThisBtn()
-    
+
+    getThisBtn(event)
+
     passwordLength = thisBtn.textContent
-    
-    thisBtn.style.backgroundColor = backColorActive   
+
+    thisBtn.style.backgroundColor = backColorActive
 }
 
 // toggle symbols/numbers on/off
@@ -206,11 +206,9 @@ function switchMode() {
 
 }
 
-// add copied msg after click
-
-
-
-function copiedText() {
-
-}
-
+document.querySelector(".b1").addEventListener("click", assign)
+document.querySelector(".b4").addEventListener("click", toggle)
+document.querySelectorAll(".b3").forEach(btn => btn.addEventListener("click", setLength))
+document.getElementById("p1").addEventListener("click", copy)
+document.getElementById("p2").addEventListener("click", copy)
+document.getElementById("mode-btn").addEventListener("click", switchMode)
